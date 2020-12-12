@@ -1,4 +1,4 @@
-module github.com/duo-labs/webauthn.io
+module github.com/Aptimex/webauthn.io
 
 go 1.12
 
