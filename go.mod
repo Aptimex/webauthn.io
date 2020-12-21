@@ -1,6 +1,8 @@
-module github.com/duo-labs/webauthn.io
+module github.com/Aptimex/webauthn.io
 
 go 1.12
+
+replace github.com/duo-labs/webauthn => github.com/Aptimex/webauthn master
 
 require (
 	github.com/bombsimon/wsl v1.2.8 // indirect
