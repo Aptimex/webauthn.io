@@ -89,7 +89,8 @@ func (store *Store) GetWebauthnSession(key string, r *http.Request) (webauthn.Se
 		return sessionData, err
 	}
 	// Delete the value from the session now that it's been read
-	delete(session.Values, key)
+	//Don't delete; actually needed to persist for vote demo
+	//delete(session.Values, key)
 	return sessionData, nil
 }
 
@@ -104,7 +105,8 @@ func (store *Store) DeleteWebauthnSession(key string, r *http.Request, w http.Re
 		return err
 	}
 	
-	session.Values[key] = nil //[]byte{} //empty data
+	//session.Values[key] = nil //[]byte{} //empty data
+	delete(session.Values, key)
 	session.Options.MaxAge = -1
 	err = session.Save(r, w)
 	if err != nil {
