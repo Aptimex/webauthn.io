@@ -88,13 +88,14 @@ func (store *Store) GetWebauthnSession(key string, r *http.Request) (webauthn.Se
 	if err != nil {
 		return sessionData, err
 	}
-	// Delete the value from the session now that it's been read
-	//Don't delete; actually needed to persist for vote demo
+	
+	//Don't delete the session after using it; sessions must persist for voting demo
 	//delete(session.Values, key)
 	return sessionData, nil
 }
 
-// DeleteWebauthnSession deletes a webauthn session given the request and responsewriter
+//DeleteWebauthnSession deletes a webauthn session given the request and responsewriter.
+//Needed to support Logout functionality
 func (store *Store) DeleteWebauthnSession(key string, r *http.Request, w http.ResponseWriter) error {
 	if key == "" {
 		key = "authentication"
@@ -105,7 +106,6 @@ func (store *Store) DeleteWebauthnSession(key string, r *http.Request, w http.Re
 		return err
 	}
 	
-	//session.Values[key] = nil //[]byte{} //empty data
 	delete(session.Values, key)
 	session.Options.MaxAge = -1
 	err = session.Save(r, w)
