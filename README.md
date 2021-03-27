@@ -1,6 +1,6 @@
 ## About
 
-This is an almost exact copy of duo-labs/webauthn.io for use with Aptimex/webauthn-voting. It contains some very minor modifications to the session handling. 
+This is an almost exact copy of [duo-labs/webauthn.io](https://github.com/duo-labs/webauthn.io) for use with [Aptimex/webauthn-voting](https://github.com/Aptimex/webauthn-voting). It contains some very minor modifications to the session handling. 
 
 ### License
 
